@@ -5,7 +5,6 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib import colors
 
 
-
 def frontLabel(width, height):
     tmargin=5
     lmargin=10
@@ -14,8 +13,6 @@ def frontLabel(width, height):
     image_pathr = '../data/wc.jpeg'
     img = Image(image_pathr, heights[1], height=height, kind='proportional')
 
-    tmargin=5
-    lmargin=10
     frontTable = Table(
         [['', '', ''],
          ['', img, ''],
@@ -24,7 +21,7 @@ def frontLabel(width, height):
        rowHeights=heights)
 
     frontTable.setStyle([
-    #    ('GRID', (0, 0), (-1, -1), 1, 'blue'),
+        #    ('GRID', (0, 0), (-1, -1), 1, 'blue'),
         ('ALIGN', (0, 0), (-1, -1), 'CENTRE'),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
     ])
@@ -63,6 +60,7 @@ def backLabel(width, height):
     ])
     return frontTable
 
+
 def front_page():
     width, height = A4
     linecount=10
@@ -83,6 +81,7 @@ def front_page():
     ])
     mainTable.wrapOn(pdf,0,0)
     mainTable.drawOn(pdf, 0, 0)
+
 
 def back_page():
     width, height = A4
@@ -108,10 +107,11 @@ def back_page():
     mainTable.drawOn(pdf, 0, 0)
     return mainTable
 
-pdf = canvas.Canvas("../data/christmas.pdf", pagesize=A4)
+if __name__ == '__main__':
+    pdf = canvas.Canvas("../data/christmas.pdf", pagesize=A4)
 
-front_page()
-pdf.showPage()
-back_page()
-pdf.showPage()
-pdf.save()
+    front_page()
+    pdf.showPage()
+    back_page()
+    pdf.showPage()
+    pdf.save()
