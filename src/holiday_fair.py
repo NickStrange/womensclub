@@ -37,15 +37,15 @@ def backLabel(width, height):
                (height - 2 * tmargin)*0.25,
                tmargin]
 
-    para1Style = ParagraphStyle('para1d', leading=15)
-    para1Style.fontSize = 15
+    para1Style = ParagraphStyle('para1d', leading=20)
+    para1Style.fontSize = 18
     para1Style.spaceAfter = 0
     para1Style.textColor = colors.HexColor('#003363')
-    text1 = "This item is handmade and local. Proceeds go towards the programs of the Cary Woman's Club."
+    text1 = "This item is handmade and local.<br /> Proceeds go towards the programs of the Cary Woman's Club."
     para1 = Paragraph(text1, para1Style)
     text2 = "We thank you for your purchase."
     para2 = Paragraph(text2, para1Style)
-    frontTable = Table(
+    backTable = Table(
         [['', '', ''],
          ['', para1, ''],
          ['', para2, ''],
@@ -53,17 +53,17 @@ def backLabel(width, height):
        colWidths=widths,
        rowHeights=heights)
 
-    frontTable.setStyle([
-      #  ('GRID', (0, 0), (-1, -1), 1, 'blue'),
-       # ('ALIGN', (0, 0), (-1, -1), 'CENTRE'),
-       # ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+    backTable.setStyle([
+    #    ('GRID', (0, 0), (-1, -1), 1, 'blue'),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTRE'),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
     ])
-    return frontTable
+    return backTable
 
 
 def front_page():
     width, height = A4
-    linecount=10
+    linecount=5
     matrix = []
     lwidth=width/2
     lheight=height/linecount
@@ -77,7 +77,7 @@ def front_page():
        rowHeights=lheight)
 
     mainTable.setStyle([
-        ('GRID', (0, 0), (-1, -1), 1, 'red'),
+     #   ('GRID', (0, 0), (-1, -1), 1, 'red'),
     ])
     mainTable.wrapOn(pdf,0,0)
     mainTable.drawOn(pdf, 0, 0)
@@ -85,7 +85,7 @@ def front_page():
 
 def back_page():
     width, height = A4
-    linecount = 10
+    linecount = 5
     matrix = []
     lwidth = width / 2
     lheight = height / linecount
