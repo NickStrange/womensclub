@@ -38,13 +38,15 @@ def backLabel(width, height):
                tmargin]
 
     para1Style = ParagraphStyle('para1d', leading=20)
+    para2Style = ParagraphStyle('para2d', leading=20)
     para1Style.fontSize = 18
+    para2Style.fontSize = 12
     para1Style.spaceAfter = 0
     para1Style.textColor = colors.HexColor('#003363')
     text1 = "This item is handmade and local.<br /> Proceeds go towards the programs of the Cary Woman's Club."
     para1 = Paragraph(text1, para1Style)
-    text2 = "We thank you for your purchase."
-    para2 = Paragraph(text2, para1Style)
+    text2 = "www.carywomansclub.org<br />We thank you for your purchase."
+    para2 = Paragraph(text2, para2Style)
     backTable = Table(
         [['', '', ''],
          ['', para1, ''],
